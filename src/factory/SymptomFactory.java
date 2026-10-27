@@ -1,4 +1,4 @@
-package factory; // Asegúrate de poner el paquete correcto
+package factory;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -8,7 +8,6 @@ import domain.*; // Importa tus clases Symptom, NeuroMuscular, etc.
 
 public class SymptomFactory {
     
-    // Diccionario para guardar los síntomas y garantizar una ÚNICA instancia
     private static Map<String, Symptom> symptomCache = new HashMap<>();
 
     public static Symptom createSymptom(String symptomName) {
@@ -26,7 +25,7 @@ public class SymptomFactory {
         List<String> impact1 = Arrays.asList("nauseas", "vómitos", "congestión nasal", "diarrea", "hemoptisis", "congestion conjuntival", "mareos");
         List<Double> index1 = Arrays.asList(5.0, 4.8, 3.7, 0.9, 0.8, 0.0, 2.0); 
 
-        List<String> digestiveSymptom = Arrays.asList("nauseas", "vómitos", "diarrea", "mareos"); // Asignamos mareos a digestivo (o al que prefieras)
+        List<String> digestiveSymptom = Arrays.asList("nauseas", "vómitos", "diarrea", "mareos");
         List<String> neuroMuscularSymptom = Arrays.asList("fiebre", "astenia", "cefalea", "mialgia", "escalofrios");
         List<String> respiratorySymptom = Arrays.asList("tos seca", "expectoracion", "disnea", "dolor de garganta", "congestión nasal", "hemoptisis", "congestion conjuntival");
 
