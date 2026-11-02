@@ -13,6 +13,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -24,12 +26,12 @@ public class PacientSymptomGUI extends JFrame {
 	private JLabel errorLabel;
 	private JLabel lblPacient;
 	private JLabel labelPacient;
-
 	
 	/**
 	 * Create the frame.
 	 */
-	public PacientSymptomGUI(Covid19Pacient p) {
+	public PacientSymptomGUI(Observable o) {
+		Covid19Pacient p = (Covid19Pacient) o;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 100, 450, 300);
 		contentPane = new JPanel();
@@ -79,9 +81,8 @@ public class PacientSymptomGUI extends JFrame {
 				if (new Integer(weightField.getText())<=3) {
 		    	System.out.println("Symptom added :"+(Symptom)symptomComboBox.getSelectedItem());
 
-				//addSymptomByName ...
-		    	p.addSymptomByName(((Symptom) symptomComboBox.getSelectedItem()).getName(), Integer.parseInt(weightField.getText()));
-				
+		    	p.addSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName(),	
+		    			Integer.parseInt(weightField.getText()));				
 			} else errorLabel.setText("ERROR, Weight between [1..3]");
 				
 			}
@@ -96,9 +97,7 @@ public class PacientSymptomGUI extends JFrame {
 
 		    	System.out.println("Symptom removed :"+(Symptom)symptomComboBox.getSelectedItem());
 
-				//removeSymptomByName...
-		    	p.removeSymptomByName(((Symptom) symptomComboBox.getSelectedItem()).getName());
-				
+				p.removeSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName());		
 			} 
 		});
 		btnRemoveSymptom.setBounds(255, 202, 147, 29);
@@ -120,4 +119,5 @@ public class PacientSymptomGUI extends JFrame {
 		contentPane.add(labelPacient);
 		this.setVisible(true);
 	}
+	
 }

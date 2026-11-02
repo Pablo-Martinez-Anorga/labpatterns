@@ -13,7 +13,7 @@ public class SemaphorGUI extends JFrame {
 	public SemaphorGUI () {
 		setSize(100, 100);
 		setLocation(350,10);
-		Color c=Color.green;
+		Color c=Color.red;
 		getContentPane().setBackground(c);
 		repaint();
 		setVisible(true);
