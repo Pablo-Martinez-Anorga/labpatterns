@@ -43,20 +43,14 @@ public class SymptomFactory {
             index = index1.get(impact1.indexOf(symptomName));
         }
 
-        Symptom s = null;
         if (impact != 0) {
             if (digestiveSymptom.contains(symptomName))
-                s = new DigestiveSymptom(symptomName, (int)index, impact);
-            else if (neuroMuscularSymptom.contains(symptomName))
-                s = new NeuroMuscularSymptom(symptomName, (int)index, impact);
-            else if (respiratorySymptom.contains(symptomName))
-                s = new RespiratorySymptom(symptomName, (int)index, impact);
+                return new DigestiveSymptom(symptomName, (int) index, impact);
+            if (neuroMuscularSymptom.contains(symptomName))
+                return new NeuroMuscularSymptom(symptomName, (int) index, impact);
+            if (respiratorySymptom.contains(symptomName))
+                return new RespiratorySymptom(symptomName, (int) index, impact);
         }
-        
-        if (s != null) {
-            symptomCache.put(symptomName, s);
-        }
-        
-        return s;
+        return null;
     }
 }
