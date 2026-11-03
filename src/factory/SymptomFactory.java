@@ -23,7 +23,7 @@ public class SymptomFactory {
         List<Double> index3 = Arrays.asList(18.6, 13.9, 13.6, 14.8, 11.4);
         
         List<String> impact1 = Arrays.asList("nauseas", "vómitos", "congestión nasal", "diarrea", "hemoptisis", "congestion conjuntival", "mareos");
-        List<Double> index1 = Arrays.asList(5.0, 4.8, 3.7, 0.9, 0.8, 0.0, 2.0); 
+        List<Double> index1 = Arrays.asList(5.0, 4.8, 3.7, 0.9, 0.8, 0.0, 1.0); 
 
         List<String> digestiveSymptom = Arrays.asList("nauseas", "vómitos", "diarrea", "mareos");
         List<String> neuroMuscularSymptom = Arrays.asList("fiebre", "astenia", "cefalea", "mialgia", "escalofrios");
@@ -44,12 +44,15 @@ public class SymptomFactory {
         }
 
         if (impact != 0) {
+        	Symptom s = null;
             if (digestiveSymptom.contains(symptomName))
-                return new DigestiveSymptom(symptomName, (int) index, impact);
-            if (neuroMuscularSymptom.contains(symptomName))
-                return new NeuroMuscularSymptom(symptomName, (int) index, impact);
-            if (respiratorySymptom.contains(symptomName))
-                return new RespiratorySymptom(symptomName, (int) index, impact);
+                s =  new DigestiveSymptom(symptomName, (int) index, impact);
+            else if (neuroMuscularSymptom.contains(symptomName))
+                s =  new NeuroMuscularSymptom(symptomName, (int) index, impact);
+            else if (respiratorySymptom.contains(symptomName))
+                s =  new RespiratorySymptom(symptomName, (int) index, impact);
+            if (s != null)
+            	symptomCache.put(symptomName, s);
         }
         return null;
     }
